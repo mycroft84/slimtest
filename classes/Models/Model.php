@@ -40,8 +40,12 @@ class Model
         return $this->db;
     }
 
-    public function all()
+    public function all($limit = null,$offset = null)
     {
+        if ($limit !== null and $offset !== null) {
+            return $this->db->get($this->table,[$offset,$limit]);
+        }
+
         return $this->db->get($this->table);
     }
 
@@ -55,6 +59,34 @@ class Model
         $this->db->where($column,$value,$rel);
 
         return $this;
+    }
+
+    public function join($table, $on, $type)
+    {
+        $this->db->join($table,$on,$type);
+        return $this;
+    }
+
+    public function orderBy($column,$dir = 'asc')
+    {
+        $this->db->orderBy($column,$dir);
+        return $this;
+    }
+
+    public function groupBy($column)
+    {
+        $this->db->groupBy($column);
+        return $this;
+    }
+
+    public function query($sql,array $params)
+    {
+        return $this->db->rawQuery($sql, $params);
+    }
+
+    public function queryOne($sql,array $params)
+    {
+        return $this->db->rawQueryOne($sql, $params);
     }
 
 }

@@ -12,4 +12,11 @@ namespace Models;
 class News extends Model
 {
     protected $table = 'news';
+
+    public function getLatest()
+    {
+        return $this
+            ->orderBy('id','desc')
+            ->first();
+    }
 }
