@@ -44,4 +44,17 @@ class Model
     {
         return $this->db->get($this->table);
     }
+
+    public function first()
+    {
+        return $this->db->getOne($this->table);
+    }
+
+    public function where($column,$value,$rel = "=")
+    {
+        $this->db->where($column,$value,$rel);
+
+        return $this;
+    }
+
 }

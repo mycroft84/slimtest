@@ -14,8 +14,11 @@ class HomeController extends Controller
 {
     public function index($request, $response, $args)
     {
-        $this->context->news = (new News())->all();
+        $this->context->news = (new News())
+            ->where('id',1)
+            ->first();
 
         return $this->render('index.twig');
     }
+
 }
