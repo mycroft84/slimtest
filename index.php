@@ -23,17 +23,7 @@ $container['view'] = function ($c) {
     return $view;
 };
 
-$app->get('/', function (Request $request, Response $response, array $args) {
-    return $this->view->render($response, 'index.twig', [
-        'rows'=>[
-            [
-                '1','2','3'
-            ],[
-                '1','2','3'
-            ],
-        ]
-    ]);
-});
+$app->get('/', \Controllers\HomeController::class.':index');
 
 $app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
     $name = $args['name'];

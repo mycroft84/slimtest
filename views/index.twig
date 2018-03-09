@@ -2,11 +2,13 @@
 
 <p>kasdkahsdkashd</p>
 <table>
-    {% for item in rows %}
+    {% for item in news %}
     <tr>
-        <td>{{ item[0] }}</td>
-        <td>{{ item[1] }}</td>
-        <td>{{ item[2] }}</td>
+        <td>{{ item['id'] }}</td>
+        <td>{{ item['title'] }}</td>
+        <td>{{ item['desc'] }}</td>
     </tr>
     {% endfor %}
 </table>
+
+{{ test }}

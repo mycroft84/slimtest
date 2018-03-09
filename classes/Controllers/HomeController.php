@@ -8,24 +8,14 @@
 
 namespace Controllers;
 
-use Interop\Container\ContainerInterface;
-use Slim\Views\Twig;
+use Models\News;
 
-class HomeController
+class HomeController extends Controller
 {
-    protected $view;
-    protected $container;
-
-    public function __construct()
+    public function index($request, $response, $args)
     {
-        var_dump('valami');
+        $this->context->news = (new News())->all();
 
-        //$this->view = $container->get('view');
-    }
-
-    public function home($request, $response, $args)
-    {
-        return $response;
-        //return $this->view->render($response, 'index.twig', []);
+        return $this->render('index.twig');
     }
 }
