@@ -2,9 +2,6 @@
 
 date_default_timezone_set('UTC');
 
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
-
 require 'vendor/autoload.php';
 
 $configuration = [
@@ -21,7 +18,7 @@ $app = new \Slim\App($c);
 // Register Twig View helper
     $container['view'] = function ($c) {
         $view = new \Slim\Views\Twig(__DIR__ . DIRECTORY_SEPARATOR . 'views', [
-            'cache' => false//__DIR__.DIRECTORY_SEPARATOR.'cache'
+            //'cache' => false//__DIR__.DIRECTORY_SEPARATOR.'cache'
         ]);
 
         // Instantiate and add Slim specific extension
@@ -32,5 +29,7 @@ $app = new \Slim\App($c);
     };
 
     $app->get('/', \Controllers\HomeController::class . ':index');
+
+    $app->post('/post', \Controllers\HomeController::class . ':post');
 
     $app->run();

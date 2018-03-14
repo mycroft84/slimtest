@@ -1,19 +1,8 @@
-<h1>index.twig</h1>
+{% extends "default.twig" %}
 
-<p>kasdkahsdkashd</p>
-<table>
-    {% for item in news %}
-    <tr>
-        <td>{{ item['id'] }}</td>
-        <td>{{ item['title'] }}</td>
-        <td>{{ item['desc'] }}</td>
-    </tr>
-    {% endfor %}
-    <tr>
-        <td>{{ news['id'] }}</td>
-        <td>{{ news['title'] }}</td>
-        <td>{{ news['desc'] }}</td>
-    </tr>
-</table>
+{% block content %}
+    <h1>index.twig</h1>
 
-{{ test }}
+    <button id="test-button" class="btn btn-primary">Test</button>
+
+{% endblock %}

@@ -15,10 +15,16 @@ class HomeController extends Controller
     public function index($request, $response, $args)
     {
         $this->context->news = (new News())
-            ->where('id',1)
+            ->where('id', 1)
             ->first();
 
-        return $this->render('index.twig');
+        return $this->render('index');
     }
 
+    public function post($request, $response, $args)
+    {
+        $this->context->valami = 'alma';
+
+        echo $this->json();
+    }
 }
